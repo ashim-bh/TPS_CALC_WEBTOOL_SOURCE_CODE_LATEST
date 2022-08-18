@@ -1,0 +1,49 @@
+@import '~@angular/material/theming';
+
+$theme-primary: (Main:#018388,
+    Light:#4eb3b8,
+    Dark: #00565b,
+    contrast: (Main: #ffffff,
+        Light: #ffffff,
+        Dark: #ffffff));
+
+$theme-accent: (Main: #949494,
+    Light: #c4c4c4,
+    Dark: #666666,
+    contrast: (Main: #000000,
+        Light: #000000,
+        Dark: #000000));
+
+$theme-warn: (Main: #f44336,
+Light: #ffebee,
+Dark: #d50000,
+contrast: (Main: #ffffff,
+    Light: #ffffff,
+    Dark: #ffffff));
+// Plus imports for other components in your app.
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$bh-tps-primary: mat-palette($theme-primary, Main, Light, Dark);
+$bh-tps-accent: mat-palette($theme-accent, Main, Light, Dark);
+$bh-tps-warn: mat-palette($theme-warn, Main, Light, Dark);
+
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$bh-tps-theme: mat-light-theme((color: (primary: $bh-tps-primary,
+            accent: $bh-tps-accent,
+            warn: $bh-tps-warn,
+        )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($bh-tps-theme);

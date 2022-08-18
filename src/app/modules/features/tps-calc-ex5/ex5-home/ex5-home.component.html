@@ -1,0 +1,178 @@
+<!--  New/ Edit Project Container-->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<section class="tps-home-container">
+
+    <div class="tps-action-container">
+  
+      <button mat-raised-button [color]="editMode || projectFormGroup.valid ? 'primary':'accent'"
+      [disabled]="(!projectFormGroup.valid || !setLoadStatus) && !projectFormGroupValid" (click)="onLoadFiles()" matTooltip="Click to load the input files">
+        Load Files
+        <mat-icon>upload</mat-icon>
+        <span *ngIf="(projectFormGroup.valid && setLoadStatus )&&  !LoadFilesUploadVal" class="badge"><mat-icon>announcement</mat-icon></span>
+    </button>
+    <a href="test:">
+       <button mat-raised-button [color]=" runButtonValid ? 'primary':'accent'" 
+       [disabled]="!runButtonStatus" (click)="onRunBtnClickEx5($event)"  matTooltip="Run CALC55 Bot">
+        Run
+        <mat-icon>play_arrow</mat-icon>
+      </button></a>
+  
+      <button mat-raised-button [color]="(projectFormGroup.valid && compDetailsValid )|| projectFormGroupValid  ? 'primary':'accent'"
+      [disabled]="(!projectFormGroup.valid  || !compDetailsValid || !LoadFilesUploadVal ) && (!dataValidStatus || !projectFormGroupValid) " 
+      (click)="onSaveBtnClick($event)" matTooltip="Click to save">
+        Save
+        <mat-icon>save</mat-icon>
+      </button>
+  
+      <button mat-raised-button [disabled]="true">
+        Export
+        <mat-icon>download</mat-icon>
+      </button>
+  
+      <button mat-raised-button color="primary" matTooltip="Click to create new project"  (click)="onNewBtnClick()">
+        New Project
+        <mat-icon>add_to_photos</mat-icon>
+      </button>
+    </div>
+    
+  
+    <div class="tps-content-container">
+  
+      <form novalidate [formGroup]="projectFormGroup" autocomplete="off" class="form-class" > 
+   
+        
+         <div class="tps-form-row">
+          <div class="tps-form-contol">
+            <label class="tps-form-label">Job Number
+              <span class="tps-input-required">*</span>
+            </label>
+  
+          </div>
+          <div class="tps-form-contol">
+            <mat-form-field appearance="fill">
+              <input  matInput formControlName="name">
+            </mat-form-field>
+          </div>
+        </div>
+  
+         <!-- Job Location-->
+        
+        <div class="tps-form-row tps-form-row-full-width">
+          <div class="tps-form-contol">
+            <label class="tps-form-label">
+              Adf File Location
+              <span class="tps-input-required">*</span>
+            </label>
+          </div>
+          <div class="tps-form-contol-upload">
+            <mat-form-field appearance="fill" class="tps-control-full-width">
+              <input matInput formControlName="location" [value]="inputFileLocation" >
+            </mat-form-field>
+            <button mat-icon-button matTooltip="Click to upload a file" [disabled]="!dataUserStatus" class="iconbutton" color="primary"
+              (click)="onClick($event)">
+              <mat-icon>folder</mat-icon>
+            </button>
+            <input  #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
+              (change)="onFileSelected($event)" accept=".adf">
+              
+            <button mat-icon-button matTooltip="Click to reset" [disabled]="!dataUserStatus" class="iconbutton" color="primary"
+              (click)="onFileResetBtnClick()">
+              <mat-icon>refresh</mat-icon>
+            </button>
+            </div>
+            
+            <div class="tps-form-control-tvals">
+              <div class="tps-full-div">
+              
+                 
+                  <div class="tps-form-contol-tmin">
+                      <label class="tps-form-label3" >TMin (°C)
+                        <span class="tps-input-required" matTooltip="Only integers and decimals are allowed">*</span>
+                      </label>
+            
+                   
+                    <div class="tmin">
+                      
+                      <mat-form-field appearance="fill"  class="tmin-textbox">
+                        <input matInput formControlName="tmin" type="number" required min="-200" max="70"  (keyup)="ValidateTempMin($event,'tmin')" class="tmin-value">
+                        <span *ngIf="tempStattmin" class="badge"><mat-icon>announcement</mat-icon></span>
+
+
+                      </mat-form-field>
+                    </div>
+
+                    </div>
+
+                    <div class="tps-form-contol-tmax">
+                      <label class="tps-form-label4">TMax (°C)
+                        <span class="tps-input-required" matTooltip="Only integers and decimals are allowed">*</span>
+                      </label>
+            
+                      <div class="tmax">
+                    
+                      <mat-form-field appearance="fill" class="tmax-textbox">
+                        <input matInput formControlName="tmax" type="number" required min="-200" max="70" (keyup)="ValidateTempMax($event,'tmax')" class="tmax-value">
+                        <span *ngIf="tempStattmax" class="badge"><mat-icon>announcement</mat-icon></span>
+
+                      </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="tps-form-contol-tavg">
+                      <label class="tps-form-label2">TAvg (°C) 
+                        <span class="tps-input-required" matTooltip="Only integers and decimals are allowed">*</span>
+                      </label>
+                    <div class="tavg">
+                    
+                  
+                      <mat-form-field appearance="fill" class="tavg-textbox">
+                        <input matInput formControlName="tavg" type="number" required min="-200" max="70"  (keyup)="ValidateTempAvg($event,'tavg')" class="tavg-value">
+                        <span *ngIf="tempStattavg" class="badge"><mat-icon>announcement</mat-icon></span>
+
+                      </mat-form-field>
+                    
+                    </div>
+                  
+                    </div>
+                   
+                
+                  </div>
+                </div>
+
+                </div>                
+                <img  *ngIf="fileimg" src="./assets/compressor/fileupload.jpg" class="file-info" alt=""> 
+
+
+                
+              
+
+        
+             
+      </form>
+  
+   </div>
+   <div class="tps-content-container1">
+   <div class="temperr">
+   <span *ngIf="tempStattmin" class="temp-error" >{{this.tempmessagetmin}}</span><br>
+   <span *ngIf="tempStattmax" class="temp-error" >{{this.tempmessagetmax}}</span><br>
+   <span *ngIf="tempStattavg" class="temp-error" >{{this.tempmessagetavg}}</span><br>
+
+  </div>
+  </div>
+  
+  
+   <ng-container *ngIf="showCompressorDetails" >
+
+    <tps-ex5-compressor [data]="compressorList" [editMode]="editMode" (onCompDataChange)="compDetailChange($event)">
+    </tps-ex5-compressor>
+
+  </ng-container>
+    
+  <div *ngIf="loadmode" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status" >
+      <span class="sr-only" id="loading"></span>
+    </div>
+  </div>
+    
+  
+  </section>

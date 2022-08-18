@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@env/*": ["src/environments/*"],  
+      "@comp/*": ["src/app/components/*"], 
+      "@core/*": ["src/app/modules/core/*"],  
+      "@features/*": ["src/app/modules/features/*"],
+      "@shared/*": ["src/app/modules/shared/*"],
+      "@assets/*": ["src/assets/*"]
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es5",
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

@@ -1,0 +1,55 @@
+.registerpage{
+    align-content: center;
+    padding-left:40px;
+    padding-top:25px;
+}
+.mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+ 
+
+}
+.spinner
+{
+  z-index: 1;
+  position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    //border: 16px solid #f3f3f3;
+    //border-radius: 50%;
+    //border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+}
+.register{
+  margin-bottom: 10px;
+  
+  width: 400px;
+  height:450px;
+}
+:host {
+  display: flex;
+  justify-content:center;
+  padding-top:40px;
+  margin: 100px 0px;
+}
+.loginpage{
+  padding-left:150px;
+  color:darkgray;
+}
+.button{
+  width:70px;
+  background-color:lightgrey;
+}
+.pwd{
+  padding-right:10px;
+}
+::ng-deep .custom-style-success{
+  background-color:rgb(1, 131, 136);
+  color:white;
+}

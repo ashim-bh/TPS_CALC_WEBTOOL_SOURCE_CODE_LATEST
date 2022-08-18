@@ -1,0 +1,100 @@
+// mat-card-title,
+//   mat-card-content {
+//     display: flex;
+//     justify-content: center;
+   
+//   }
+.spinner
+{
+  z-index: 1;
+  position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    //border: 16px solid #f3f3f3;
+    //border-radius: 50%;
+    //border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+}
+  .mat-card mat-focus-indicator{
+    box-shadow: 0px;
+  }
+  .bh-calc{
+    padding-right:20px;
+    align-content: center;
+  }
+  .img{
+    padding-left:150px;
+   // border-style: solid;
+   margin-bottom: auto;
+  }
+  .signin{
+    padding-top:20px;
+    padding-left:10px;
+    
+    
+  }
+  .whole-div{
+    width: 500px;
+    height:400px;
+    //padding-top:40px;
+    //padding-left:300px;
+  }
+  :host {
+    display: flex;
+    justify-content:center;
+    padding-top:40px;
+    margin: 100px 0px;
+  }
+  .tps{
+    padding-left:100px;
+    padding-bottom:40px;
+  }
+  .mat-card-title{
+    justify-content: center;
+    padding-left:150px;
+  }
+  .uname{
+    justify-content: center;
+    padding-left:130px;
+    padding-top:10px;
+  }
+  .pwd{
+   // padding-left:50px;
+    padding-left:130px;
+  }
+  .register{
+    padding-left:10px;
+    color:darkgray;
+  }
+  // .button{
+    
+  //  // padding-left:50px;
+ 
+  //  // margin: 100px auto 8px
+  //  // display: flex;
+  //  // justify-content: center;
+  // }
+  .newuser{
+    padding-left:130px;
+  }
+  .mat-button{
+    background-color:lightgrey;
+  }
+  // .mat-focus-indicator button mat-button mat-button-base{
+  //   background-color: blue;
+  //   padding-left:50px;
+  // }
+  .btn{
+    padding-left:130px;
+  }
+  .chkbox{
+    padding-left:130px;
+  }  
+.login{
+  padding-left:40px;
+}

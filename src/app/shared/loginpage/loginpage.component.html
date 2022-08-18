@@ -1,0 +1,70 @@
+
+  <!-- <div class="bh">
+   <h1 class="bh-calc">
+     <img src="https://ok7static.oktacdn.com/fs/bco/1/fs01l51dgetNRyxVJ357" class="img">
+   </h1>
+  </div> -->
+  <div class="tps">
+    
+  <mat-card class="whole-div">
+    <h1 class="bh-calc">
+      <img src="https://ok7static.oktacdn.com/fs/bco/1/fs01l51dgetNRyxVJ357" class="img">
+    </h1>
+    <mat-divider></mat-divider>
+    <div class="login">
+        <mat-card-title class="signin">Sign In</mat-card-title>
+      </div>
+        <mat-card-content>
+            <form [formGroup]="loginForm" novalidate>
+
+              <div  class="uname">
+                <input id="calc" type="radio" class="custom-control-input" value="calc55" name="toolselect" formControlName="toolselect">
+                <label class="custom-control-label" for="calc">Calc 55</label>
+              &nbsp;&nbsp;
+                <input id="ex" type="radio" class="custom-control-input" value="ex5" name="toolselect" formControlName="toolselect">
+                <label class="custom-control-label" for="ex5">Ex5</label>
+              </div>
+
+        <div class="uname">
+            <mat-form-field> 
+              
+        <input  matInput type="text" placeholder="4-3-1 ID or 9 Digit SSO-ID" formControlName="ssoidOrBhid">
+        <!-- <input matInput placeholder="UserName/Email" formControlName="username">
+        <mat-error *ngIf="!loginForm.get('email')?.errors?.required && (loginForm.get('email')?.errors?.pattern)">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) && loginForm.get('email')?.errors?.required">
+          Email is required
+        </mat-error> -->
+    </mat-form-field>
+    </div>
+
+  
+    <div class="pwd">
+      <mat-form-field>
+        <input  matInput placeholder="Password" [type]=" !hide ? 'text' : 'password' "  formControlName="password">
+      </mat-form-field>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+    </div>
+    <!-- <div class="chkbox">
+      <mat-checkbox class="checkbox" color="primary"><h4>Remember me</h4>
+
+      </mat-checkbox>
+    </div> -->
+  <br>
+    <div class="btn">
+      <button [disabled]="!loginForm.valid" (click)="loginBtnClick()" mat-raised-button color="primary">Login</button>
+    </div><br>
+  
+  <p class="newuser">You don't have an account?
+    <a [routerLink]="['/reg']" class="register" >Register Here</a>
+    </p>
+
+</form>
+<mat-spinner *ngIf="spinenabled" class="spinner"></mat-spinner>
+</mat-card-content>
+
+  </mat-card>
+  
+</div>

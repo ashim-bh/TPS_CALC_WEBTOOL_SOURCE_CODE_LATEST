@@ -1,0 +1,52 @@
+<!-- Toolbar -->
+<header class="header tps-header-menu" fxLayout="row">
+    <div class="tps-title">
+      <a  class="tps-brand-title">
+        {{toolType}}
+        <!-- tooltype-->
+      </a>
+    </div>
+    <nav *ngIf="calc55Enabled" class="tps-nav-menu">
+     
+      <a [routerLink]="['/calc55']" routerLinkActive="menu-link-active" [routerLinkActiveOptions]="{exact: true}" class="tps-menu-link">
+        search projects
+      </a>
+      <a [routerLink]="['/calc55/new']" routerLinkActive="menu-link-active" class={{rtrVal}}> project data</a>
+       
+      <a routerLinkActive="menu-link-active" class="tps-menu-link" (click)="onHelpBtnClick(toolType)"> help</a>
+    </nav>
+    <nav *ngIf="ex5Enabled" class="tps-nav-menu">
+     
+      <a [routerLink]="['/ex5']" routerLinkActive="menu-link-active" [routerLinkActiveOptions]="{exact: true}" class="tps-menu-link">
+        search projects
+      </a>
+      <a [routerLink]="['/ex5/new']" routerLinkActive="menu-link-active" class={{rtrVal}}> project data</a>
+      <a routerLinkActive="menu-link-active" class="tps-menu-link" (click)="onHelpBtnClick(toolType)"> help</a>
+    </nav>
+    <nav *ngIf="ex5Enabled || calc55Enabled"class="tps-nav-user">
+      <a>Username: {{userName}}
+      </a>
+      </nav>
+      <nav class="tps-nav-version">
+    <a *ngIf="versionDetail.enabled">
+      Project Rec Id: {{versionDetail.value | tpsNumberFormatter}}
+    </a>
+    </nav>
+    <nav class="tps-nav-bot">
+    <a *ngIf="versionDetail.enabled">
+      BOT Status :</a>
+    </nav>
+ 
+  <mat-icon class="newClass" *ngIf="versionDetail.enabled && botValStatNew">circle</mat-icon><a *ngIf="botValStatNew" >{{botStatus.value1}}</a>
+  <mat-icon class="runClass" *ngIf="versionDetail.enabled && botValStatRun ">circle</mat-icon><a *ngIf="botValStatRun" >{{botStatus.value1}}</a>
+  <mat-icon class="successClass" *ngIf="versionDetail.enabled && botValStatSuccess ">circle</mat-icon><a *ngIf="botValStatSuccess" >{{botStatus.value1}}</a>
+  <mat-icon class="failedClass" *ngIf="versionDetail.enabled && botValStatFailed ">circle</mat-icon><a *ngIf="botValStatFailed" >{{botStatus.value1}}</a>
+  <mat-icon class="stoppedClass" *ngIf="versionDetail.enabled && botValStatStopped">circle</mat-icon><a *ngIf="botValStatStopped" >{{botStatus.value1}}</a>
+&nbsp;&nbsp;&nbsp;
+
+  <nav *ngIf="ex5Enabled || calc55Enabled " class="tps-nav-menu1">
+  <a (click)="onLogout()" >
+    Logout
+  </a>
+  </nav>
+  </header>

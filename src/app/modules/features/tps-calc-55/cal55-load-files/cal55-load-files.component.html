@@ -1,0 +1,358 @@
+
+
+
+<div mat-dialog-content class="tps-modal-content-container">
+  <div class="header-div"><h2 class="header-class" mat-dialog-title>Load Files </h2>
+ 
+  <nav class="info-nav" class="header-class" mat-dialog-title>
+    <button mat-icon-button matTooltip="info" class="iconbutton"  (click)="onInfoClick($event)">
+      <mat-icon (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="mat-info-icon">
+        <img  *ngIf="showImg"
+        src="./assets/compressor/calc55loadfile.jpg" class="img-info" alt=""> 
+        info        
+      </mat-icon> 
+      </button> </nav>
+    </div>
+    
+    <div class="tps-content-container">
+
+        <form novalidate [formGroup]="loadfilesFormGroup" autocomplete="off">
+    
+         <!-- Job Location-->
+         
+          <div *ngIf="staC1p1" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co1_Po1 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo1Po1"  id="Co1P1"  [(ngModel)]="staLocCo1P1" (input)="onClick($event,'Co1P1')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c1p1Valid"  class="check_circle">check_circle</mat-icon>
+
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co1P1"   matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co1P1')">
+                <mat-icon id="1">folder</mat-icon>
+              </button>
+              <input #fileUpload1 type="file" id="Co1P1" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co1P1')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co1P1')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+             
+            </div>
+          </div>
+
+           <div *ngIf="staC1p2" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co1_Po2 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo1Po2" id="Co1P2" [(ngModel)]="staLocCo1P2" (input)="onClick($event,'Co1P2')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c1p2Valid"  class="check_circle">check_circle</mat-icon>
+
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co1P2" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co1P2')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload2 type="file" id="Co1P2"  class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co1P2')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co1P2')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+             
+            </div>
+          </div>
+          <div *ngIf="staC1p3" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co1_Po3 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo1Po3" id="Co1P3" [(ngModel)]="staLocCo1P3" (input)="onClick($event,'Co1P3')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c1p3Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co1P3" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co1P3')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload3 type="file" id="Co1P3" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co1P3')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co1P3')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+              
+            </div>
+          </div>
+          
+          
+          <div *ngIf="staC2p1" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co2_Po1 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo2Po1" id="Co2P1" [(ngModel)]="staLocCo2P1" (input)="onClick($event,'Co2P1')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c2p1Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co2P1" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co2P1')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload4 type="file" id="Co2P1" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co2P1')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co2P1')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+            
+            </div>
+          </div>
+          <div  *ngIf="staC2p2" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co2_Po2 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo2Po2" id="Co2P2" [(ngModel)]="staLocCo2P2" (input)="onClick($event,'Co2P2')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c2p2Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co2P2" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co2P2')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload5 type="file" id="Co2P2" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co2P2')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co2P2')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+              
+            </div>
+          </div>
+          <div *ngIf="staC2p3" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co2_Po3 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo2Po3" id="Co2P3" [(ngModel)]="staLocCo2P3" (input)="onClick($event,'Co2P3')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c2p3Valid"  class="check_circle">check_circle</mat-icon>
+              
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co2P3" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co2P3')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload6 type="file" id="Co2P3" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co2P3')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co2P3')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+              
+            </div>
+          </div>
+
+
+
+          <div  *ngIf="staC3p1" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co3_Po1 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput formControlName="staLocCo3Po1" id="Co3P1" [(ngModel)]="staLocCo3P1" (input)="onClick($event,'Co3P1')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c3p1Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co3P1" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co3P1')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload7 type="file" id="Co3P1"  class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co3P1')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co3P1')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+             
+            </div>
+          </div>
+          <div *ngIf="staC3p2" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co3_Po2 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo3Po2" id="Co3P2" [(ngModel)]="staLocCo3P2" (input)="onClick($event,'Co3P2')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c3p2Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co3P2" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co3P2')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload8 type="file" id="Co3P2"  class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co3P2')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co3P2')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+            
+            </div>
+          </div>
+          <div *ngIf="staC3p3" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Full STA File Path_Co3_Po3 :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="staLocCo3Po3" id="Co3P3" [(ngModel)]="staLocCo3P3" (input)="onClick($event,'Co3P3')" >
+              </mat-form-field>
+              <mat-icon *ngIf="c3p3Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="Co3P3" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'Co3P3')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload9 type="file" id="Co3P3" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'Co3P3')" accept=".sta">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('Co3P3')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+             
+            </div>
+          </div> 
+
+
+
+
+
+
+          <div *ngIf="studyCo1" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+               Study File Path_Co1 (.prt) :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput formControlName="studyLocCoPrt1" id="prtCo1"  [(ngModel)]="studyLocCo1" (input)="onClick($event,'prtCo1')" >
+              </mat-form-field>
+              <mat-icon *ngIf="C1Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="prtCo1" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'prtCo1')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload10 type="file" id="prtCo1" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'prtCo1')" accept=".prt">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('prtCo1')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+            
+            </div>
+          </div>      
+
+           <div *ngIf="studyCo2" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+                Study File Path_Co2 (.prt) :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput  formControlName="studyLocCoPrt2" id="prtCo2" [(ngModel)]="studyLocCo2" (input)="onClick($event,'prtCo2')" >
+              </mat-form-field>
+              <mat-icon *ngIf="C2Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="prtCo2" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'prtCo2')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload11 type="file" id="prtCo2" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'prtCo2')" accept=".prt">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('prtCo2')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+            
+            </div>
+          </div>          
+          <div *ngIf="studyCo3" class="tps-form-row tps-form-row-full-width">
+            <div class="tps-form-contol">
+              <label class="tps-form-label">
+                Study File Path_Co3 (.prt) :
+                <span class="tps-input-required">*</span>
+              </label>
+            </div>
+            <div class="tps-form-contol">
+              <mat-form-field appearance="fill" class="tps-control-full-width">
+                <input matInput formControlName="studyLocCoPrt3" id="prtCo3" [(ngModel)]="studyLocCo3" (input)="onClick($event,'prtCo3')" >
+              </mat-form-field>
+              <mat-icon *ngIf="C3Valid"  class="check_circle">check_circle</mat-icon>
+
+              <!-- <button mat-icon-button [disabled]="!dataUserStatus" id="12" matTooltip="Click to upload a file" class="iconbutton" color="primary"
+                (click)="onClick($event,'prtCo3')">
+                <mat-icon>folder</mat-icon>
+              </button>
+              <input #fileUpload12 type="file" id="12" class="input_fileupload--hidden" (input)="onInput($event)"
+                (change)="onFileSelected($event,'prtCo3')" accept=".prt">-->
+              <button mat-icon-button [disabled]="!dataUserStatus" matTooltip="Click to reset" class="iconbutton" color="primary" (click)="onFileResetBtnClick('prtCo3')">
+                <mat-icon>refresh</mat-icon>
+              </button> 
+             
+            </div>
+          </div>
+        </form>
+      </div> 
+    
+
+</div>
+<div mat-dialog-actions align="center" class="tps-modal-action-container">
+    
+  <button mat-raised-button color="primary" (click)="onSaveBtnClick()" [disabled]="!this.loadfilesFormGroupStat || !dataUserStatus">
+      {{data.primaryBtnText ? data.primaryBtnText : 'Ok'}}
+  </button>
+  <button mat-raised-button color="secondary" (click)="onClose()">
+    {{data.secondaryBtnText ? data.secondaryBtnText : 'Close'}}
+</button>
+</div>
+
+<div *ngIf="loadmode" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status" >
+    <span class="sr-only" id="loading"></span>
+  </div>
+</div>

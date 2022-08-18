@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{data.modalTitle}}</h2>
+<div mat-dialog-content class="mat-typography tps-modal-content-container">
+    <p *ngIf="!data.customTemplate; else template">{{data.modalContent}}</p>
+    <ng-template #template>
+        <mat-form-field>
+            <input matInput placeholder="Project Name" [(ngModel)]="fileName">
+        </mat-form-field>
+    </ng-template>
+</div>
+<div mat-dialog-actions align="end" class="tps-modal-action-container">
+    
+    <button mat-raised-button [disabled]="validStat" color="primary" (click)="onPrimaryBtnClick()">
+        {{data.primaryBtnText ? data.primaryBtnText : 'Ok'}}
+    </button>
+
+    <button mat-raised-button [disabled]="editMode" color="primary" (click)="onSecondaryBtnClick()" *ngIf="data.seondaryBtnText">
+        {{data.seondaryBtnText ? data.seondaryBtnText : 'Cancel'}}
+    </button>
+
+    <button mat-raised-button color="accent" (click)="onTertiaryBtnClick()" *ngIf="data.tertiaryBtnText">
+        {{data.tertiaryBtnText ? data.tertiaryBtnText : 'Cancel'}}
+    </button>
+</div>

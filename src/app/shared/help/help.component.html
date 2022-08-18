@@ -1,0 +1,39 @@
+<div class="mainDivHelpCalc55" *ngIf="calc55Stat"><h2 mat-dialog-title>{{data.modalTitle}}</h2>
+<div mat-dialog-content class="mat-typography tps-modal-content-container">
+    <p *ngIf="!data.customTemplate; else template">{{data.modalContent}}</p>
+
+    <ng-template #template>
+        <mat-form-field>
+            <input matInput placeholder="Project Name">
+        </mat-form-field>    </ng-template>
+    <p><iframe src="./assets/Help/PrerequistiesforCALC55.pdf" width="700" height="700" [frameBorder]="0"></iframe></p>
+
+</div>
+<div mat-dialog-actions align="end" class="tps-modal-action-container">
+    
+    <button mat-raised-button color="primary" (click)="onBtnClick()">
+        {{data.primaryBtnText ? data.primaryBtnText : 'Ok'}}
+    </button>
+
+</div>
+</div>
+
+<div class="mainDivHelpEx5" *ngIf="ex5Stat"><h2 mat-dialog-title>{{data.modalTitle}}</h2>
+    <div mat-dialog-content class="mat-typography tps-modal-content-container">
+        <p *ngIf="!data.customTemplate; else template">{{data.modalContent}}</p>
+    
+        <ng-template #template>
+            <mat-form-field>
+                <input matInput placeholder="Project Name">
+            </mat-form-field>    </ng-template>
+        <p><iframe src="./assets/Help/PrerequistiesforEX5.pdf" width="700" height="700" [frameBorder]="0"></iframe></p>
+    
+    </div>
+    <div mat-dialog-actions align="end" class="tps-modal-action-container">
+        
+        <button mat-raised-button color="primary" (click)="onBtnClick()">
+            {{data.primaryBtnText ? data.primaryBtnText : 'Ok'}}
+        </button>
+    
+    </div>
+    </div>

@@ -1,0 +1,30 @@
+$tps-menu-bg: #2d323e;
+$tps-color-white: #ffffff;
+
+$tps-primary-color: #018388;
+$tps-secondary-color: #949494;
+$tps-warn-color: #f44336;
+
+
+// Width and Height 
+$max: 500;
+$offset: 2;
+$unit: 'px';
+@mixin tps-custom-class($className, $styleName) {
+  $i: 0;
+  @while $i <= $max {
+    #{$className + $i} { 
+      #{$styleName}: #{$i + $unit};
+    }
+    $i: $i + $offset;
+  }
+}
+
+@include tps-custom-class('.tps-select-', 'width');
+@include tps-custom-class('.tps-input-', 'width');
+@include tps-custom-class('.tps-width-', 'width');
+@include tps-custom-class('.tps-min-width-', 'min-width');
+@include tps-custom-class('.tps-max-width-', 'max-width');
+@include tps-custom-class('.tps-height-', 'height');
+@include tps-custom-class('.tps-min-height-', 'min-height');
+@include tps-custom-class('.tps-max-height-', 'max-height');

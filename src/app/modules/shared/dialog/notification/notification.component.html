@@ -1,0 +1,31 @@
+
+    <div *ngIf="l1stat" mat-dialog-content class="mat-typography tps-modal-content-container">
+        <div  mat-dialog-content class="mat-typography tps-modal-content-container">
+            <p><iframe src="./assets/compressor/h1image.png" width="1000" height="700" align="center" [frameBorder]="0" class="frame_l1"></iframe></p>
+           
+        </div>
+        </div>
+        
+         
+        
+        <div *ngIf="l2stat" mat-dialog-content class="mat-typography tps-modal-content-container">
+        <!-- <div mat-dialog-content class="mat-typography tps-modal-content-container"> -->
+        
+        <div  mat-dialog-content  class="mat-typography tps-modal-content-container">
+            <p><iframe src="./assets/compressor/l2_image.png" width="1000" height="700" [frameBorder]="0"></iframe></p>
+          </div>
+          
+        </div>
+        
+        <div mat-dialog-actions align="end" class="tps-modal-action-container">
+        
+            <button mat-raised-button color="primary" (click)="onBtnClick1()">
+                {{data.primaryBtnText ? data.primaryBtnText : 'OK'}}
+            </button>
+            
+        </div>
+        <!-- <div>
+            <button mat-button (click)="onBtnClick1()">Ok</button>
+            
+        
+        </div> -->

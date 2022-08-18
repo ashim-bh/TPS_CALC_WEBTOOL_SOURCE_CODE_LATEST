@@ -1,0 +1,142 @@
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<div class="tps-action-container tps-margin-0" fxLayout="row">
+    <button  [disabled]="!dataUserStatus" mat-raised-button color="primary" matTooltip="Click to reset"  (click)="onResetBtnClick()">Reset
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+  
+  <!-- Compressor Details -->
+  <div class="tps-home-table-container mat-elevation-z10">
+    <mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- Compressor Id/ Checkbox -->
+      <ng-container matColumnDef="id">
+  
+        <mat-header-cell *matHeaderCellDef class="tps-max-width-80" matTooltip="Compressor wise selector">
+          <mat-checkbox  [disabled]="!dataUserStatus" color="primary" class="mat-checkbox-layout" (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">Selector
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="tps-max-width-80">
+          <mat-checkbox  [disabled]="!dataUserStatus"  color="primary" (click)="$event.stopPropagation()"
+            (change)="$event ? onRowChecked(row, $event) : null" [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+  
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Compressor -->
+      <ng-container matColumnDef="compType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-130"> Compressor</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="tps-max-width-120">
+          {{row.compType}}
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-130"> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="tps-max-width-120"> {{row.name}} </mat-cell>
+      </ng-container>
+  
+      
+      
+  
+      <!-- Seal Type -->
+      <ng-container matColumnDef="sealtype" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-sealtype"> Seal Type</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+          <mat-form-field  appearance="fill" class="tps-m-t-20">
+            <mat-select  [disabled]="!dataUserStatus" [(value)]="row.sealType" align="center" (selectionChange)="onValueChange(row,row.compType)">
+              <mat-option value="Oil seals"> Oil seals </mat-option>
+              <mat-option value="Dry gas seals">Dry gas seals</mat-option>
+              <mat-option value="Custom deg c">Custom deg c</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+        </mat-cell>
+      </ng-container>
+  
+    <!-- Seal Temperature -->
+      <ng-container matColumnDef="sealtemperature">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-sort-header-content" >Seal Temperature (°C) </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field appearance="fill" class="tps-m-t-20">
+            <input  matInput [disabled]=" !dataUserStatus || !row.enabled" type="number" [value]="row.sealTemperature" (keyup)="onTemp($event,row.compType)" class="mat-sealtemp" autocomplete="on">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+      <!-- Height of support(L1)-->
+      <ng-container matColumnDef="L1">
+        
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-l1">
+         
+          Height of support near key - L1 (mm)
+          <button mat-icon-button type="button" onclick="this.blur()"  class="info-icon" (click)=" onL1L2Image('l1')">
+          <mat-icon class="mat-info-icon" >
+            <!-- <p><iframe src="./assets/compressor/h1image.png" width="700" height="700" [frameBorder]="0"></iframe></p> -->
+
+            info
+            
+          </mat-icon> 
+        </button>
+          <!-- <button mat-raised-button color="primary" > -->
+            <!-- <mat-icon>info</mat-icon>
+            <img  *ngIf="showImage"
+            src="C:\Users\gunahar\Downloads\TPS-CALC-Webtool-Source-Code-05May Latest (1)\src\assets\compressor\h1image.png" (click)="imageOnClick($event)" class="img-L1" alt="">  -->
+             
+             
+                  
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field appearance="fill" class="tps-m-t-20">
+            
+            <input matInput [disabled]="!dataUserStatus" [value]="row.heightOfsupportnearkey" type="number" (keyup)="l1Click($event,row.compType)" class="mat-h1" autocomplete="on" matTooltip="Only integers and decimal values are allowed">
+           
+          </mat-form-field>
+          
+          <!-- <nav *ngIf="!showImage" class="help-block">Password is required</nav> -->
+        </mat-cell>
+        
+      </ng-container>
+       <!-- Height of support(L2)-->
+       <ng-container matColumnDef="L2">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="mat-header-cell1"  >Height of support away from key - L2 (mm)
+          <button mat-icon-button type="button" onclick="this.blur()"  class="info-icon" (click)=" onL1L2Image('l2')">
+          <!-- <mat-icon (mouseenter)="lImageClick()" (mouseleave)="lImageBtnClick()" class="mat-info-l2icon">info -->
+            <mat-icon class="mat-info1-icon" >info
+            <!-- <img  *ngIf="showImg" src="./assets/compressor/l2_image.png" class="img-L2" alt="">  -->
+          </mat-icon> 
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field appearance="fill" class="tps-m-t-20">
+            <input matInput  [disabled]="!dataUserStatus" [value]="row.heightOfAwayfromkey" type="number" (keyup)="l2Click($event,row.compType)" class="mat-h2" autocomplete="on">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+      <!-- JB Average Clearance-->
+      <ng-container matColumnDef="JBavg">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Average Diameter JB Clearance (mm)</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field appearance="fill" class="tps-m-t-20">
+            <input matInput  [disabled]="!dataUserStatus" [value]="row.jbavg" class="mat-jbavg" type="number" (keyup)="jbClick($event,row.compType)" autocomplete="on" >
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    
+  </mat-table>
+</div><br>
+<!-- <div class="l1img">
+
+</div>
+<div class="l2img">
+ <img *ngIf="showImg" src="./assets/compressor/L2image.png" class="img-L2" alt=""> 
+</div> -->
+
+    

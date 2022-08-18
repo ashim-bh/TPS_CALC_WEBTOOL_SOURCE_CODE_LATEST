@@ -1,0 +1,142 @@
+<div class="tps-action-container tps-margin-0" fxLayout="row">
+  <button mat-raised-button  [disabled]="!dataUserStatus" color="primary" matTooltip="Click to reset" (click)="onResetBtnClick()">Reset
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
+
+<!-- Compressor Details -->
+<div class="tps-home-table-container mat-elevation-z10">
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Compressor Id/ Checkbox -->
+    <ng-container  matColumnDef="id" class="selector">
+
+      <mat-header-cell *matHeaderCellDef class="tps-max-width-100"  matTooltip="Compressor wise selector" align-items="baseline">
+        <mat-checkbox  [disabled]="!dataUserStatus" color="primary" (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()">Selector
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" mat-cell-selector class="tps-max-width-100" >
+        <mat-checkbox  [disabled]="!dataUserStatus" color="primary" (click)="$event.stopPropagation()"
+          (change)="$event ? onRowChecked(row, $event) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+
+      </mat-cell>
+    </ng-container>
+
+    <!-- Compressor -->
+    <ng-container matColumnDef="compType">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-150"> Compressor</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="tps-max-width-150">
+        {{row.compType}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-150"> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="tps-max-width-150"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Portions -->
+    <ng-container  matColumnDef="portionsDetails">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-150"> Portion
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row" class="tps-max-width-150" >        
+          <ng-container *ngIf="row.checkedStatus">
+            <ng-container *ngFor="let portion of row.portion">
+              <div style="display: flex; align-items: center;">
+                <mat-checkbox  [disabled]="!dataUserStatus" color="primary" [checked]="portion.checked"  (change)="onPortionChange(row, portion, $event)"> {{portion.name}} </mat-checkbox>  
+              </div> 
+            </ng-container>
+        </ng-container>        
+      </mat-cell>
+
+    </ng-container>
+
+<!-- Product structure / Checkbox -->
+<ng-container  matColumnDef="ps" >
+  <mat-header-cell *matHeaderCellDef class="tps-max-width-80"  matTooltip="Product Structure" >PS 
+  </mat-header-cell>
+
+   <mat-cell *matCellDef="let row" class="tps-max-width-80" >                  
+                <mat-checkbox  [disabled]="!dataUserStatus" color="primary" [checked]="row.productStructre"  (change)="onPSChange($event,row.compType)">
+                   </mat-checkbox>  
+      
+
+  </mat-cell>
+</ng-container>
+    <!-- Scroll Position -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-300"> Scroll Position</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="tps-max-width-300">
+        <mat-form-field appearance="fill" class="tps-m-t-20">
+          <mat-select  [disabled]="!dataUserStatus" [(value)]="row.position" (selectionChange)="onValueChangePos()">
+            <mat-option value="Int"> Int </mat-option>
+            <mat-option value="Ext">Ext</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-cell>
+    </ng-container>
+
+    <!-- Outlet Cone -->
+    <ng-container matColumnDef="outlet">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-300"> Outlet Cone </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="tps-max-width-300">
+        <mat-form-field appearance="fill" class="tps-m-t-20">
+          <mat-select  [disabled]="!dataUserStatus" [(value)]="row.outlet" (selectionChange)="onValueChangeOutlet()">
+            <mat-option value="Smooth"> Smooth </mat-option>
+            <mat-option value="Rought">Rough</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <!-- collector -->
+    <ng-container matColumnDef="collector">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-150"> Collector Scroll? </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="tps-max-width-150">
+        <mat-slide-toggle  [disabled]="!dataUserStatus" color="primary" style="margin-left: 10px;" [(ngModel)]="row.collector" (change)="onSlideValChange($event,row)">
+        </mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Outlet Cone -->
+    <ng-container matColumnDef="startAngle">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-300"> Outlet Cone Starting Angle (Theta E) </mat-header-cell>
+    
+        
+      <mat-cell  *matCellDef="let row" class="tps-max-width-300">
+        <mat-form-field  appearance="fill" class="tps-m-t-20">
+          <mat-select [disabled]=" !dataUserStatus || row.enabled" [(value)]="row.startAngle" (selectionChange)="onValueChange(row)">
+            <mat-option value="Default"> Default </mat-option>
+            <mat-option value="Manual">Manual</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+    
+
+    <!-- Value -->
+    <ng-container matColumnDef="value">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="tps-max-width-200"> (Theta E) </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="tps-max-width-200">
+
+        <mat-form-field appearance="fill" class="tps-m-t-20">
+          <!-- <input [disabled]="!dataUserStatus || selCollector" matInput [value]="row.value" autocomplete="on" (onchange)="thetaValueChange($event)">
+         -->
+         <input matInput  id={{row.name}} [disabled]="!dataUserStatus || !row.thetaEnabled || row.enabled" type="number" [(value)]="row.value"  (keyup)="thetaValueChange($event,row.compType)">
+
+        </mat-form-field>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+</div>

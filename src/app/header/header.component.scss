@@ -1,0 +1,50 @@
+.tps-nav-menu{
+    flex: auto;
+}
+.tps-nav-menu1{
+  padding-right: 20px;
+
+text-transform: capitalize;
+color: #ffffff;
+text-decoration: none;
+}
+.tps-nav-user
+{
+    //flex:auto;
+    padding-right: 20px;
+}
+.tps-nav-version{
+    //flex:auto;
+    padding-right: 20px;
+}
+
+.newClass{
+    padding-left: 5px;
+    padding-right: 8px;
+    color: rgb(255, 255, 255);
+  }
+  .runClass{
+    padding-left: 5px;
+    padding-right: 8px;
+    color: rgb(255, 255, 0);
+  }
+  .successClass{
+    padding-left: 5px;
+    padding-right: 8px;
+    color: rgb(1, 131, 136);
+  }
+  .failedClass{
+    padding-left: 5px;
+    padding-right: 8px;
+    color: red;
+  }
+  .stoppedClass{
+    padding-left: 5px;
+    padding-right: 8px;
+    color: rgb(164, 164, 164);
+  }
+  .tps-menu-link1
+  {
+    border-bottom: 0.25rem solid #018388;
+   
+  }
